@@ -5,7 +5,7 @@
   "Database": {
     "uri": "mongodb://localhost:27017/slacklike",
     "url": "mongodb://localhost:27017",
-    "databaseName": "classroom",
+    "databaseName": "slacklike",
     "saltRounds": 2
   },
 }
