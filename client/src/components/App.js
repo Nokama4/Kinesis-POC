@@ -84,7 +84,7 @@ const App = () => {
           return (
           <S.UserThumb
             tabIndex="0"
-            key={lastname}
+            key={id}
             onClick={onClick(id)}
           >
             <S.Avatar aria-label="Avatar" src={avatar}/>

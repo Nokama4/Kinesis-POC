@@ -23,27 +23,37 @@ const List = ({ usersIds, userById }) => {
     }
   );
 
-console.log({ data });
   /*
    * Render
    */
   return (
   <S.ListContainer>
-    <S.ChatsContainer>
+    {!isLoading && (
+      <>
+      <S.ChatsContainer>
+        {data.chatsIds.map((id) => {
+          const { type } = data.chatById[id];
 
-    </S.ChatsContainer>
-    <S.UsersContainer>
-      {usersIds?.map((id) => {
-        // Get name data
-        const { firstname, lastname } = userById[id];
+          return type === 'general' ? (<S.Item key={id}></S.Item>) : null
 
-        return (
-        <S.Item tabIndex="0" key={lastname}>
-          {`${firstname} ${lastname}`}
-        </S.Item>
-      )})}
-    </S.UsersContainer>
+        })}
+      </S.ChatsContainer>
+      <S.UsersContainer>
+        {usersIds?.map((id) => {
+          // Get name data
+          const { firstname, lastname } = userById[id];
+
+          return (
+          <S.Item tabIndex="0" key={id}>
+            {`${firstname} ${lastname}`}
+          </S.Item>
+        )})}
+      </S.UsersContainer>
+
+      </>
+    )}
   </S.ListContainer>
+
 );
 };
 

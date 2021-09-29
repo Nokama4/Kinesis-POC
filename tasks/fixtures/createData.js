@@ -3,11 +3,22 @@
  */
 import { createUser, updateUser } from '../../server/database/repositories/User.js';
 import { createChat, updateChat } from '../../server/database/repositories/Chat.js';
-// import { createMessage } from 'server/database/repositories/Message';
+import { createMessage } from '../../server/database/repositories/Message.js';
 
 // Helpers
 import CHATS from '../../server/constants/chats.js';
 import * as data from './data.js';
+
+/**
+ * Get a random index
+ * @param  {Number} max
+ * @param  {Number} [min=0]
+ * @return {Number}
+ */
+const getRandomIndex = (max, min = 0) => {
+  max = max || min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 /**
  * Create new messages fixture
@@ -15,26 +26,26 @@ import * as data from './data.js';
  * @param  {String}  chatId
  * @return {Promise}
  */
-// const newMessages = async ({ users, chatId }) => {
-//   try {
-//     const messages = await Promise.all(
-//       data.messages.map((message) => {
-//         const randomIndex = getRandomIndex(users.length - 1);
-//
-//         return createMessage({
-//           userId: users[randomIndex],
-//           chatId,
-//           ...message,
-//         });
-//       }),
-//     );
-//
-//     return messages;
-//   }
-//   catch (error) {
-//     throw new Error(error);
-//   }
-// };
+const newMessages = async ({ users, chatId }) => {
+  try {
+    const messages = await Promise.all(
+      data.messages.map((message) => {
+        const randomIndex = getRandomIndex(users.length - 1);
+
+        return createMessage({
+          userId: users[randomIndex],
+          chatId,
+          ...message,
+        });
+      }),
+    );
+
+    return messages;
+  }
+  catch (error) {
+    throw new Error(error);
+  }
+};
 
 /**
  * Create fixtures
@@ -44,7 +55,7 @@ export const createData = async () => {
   try {
 
     const generalChat = await createChat({
-      kind: CHATS.GENERAL,
+      kind: 'general',
     });
 
     /*
@@ -83,7 +94,7 @@ export const createData = async () => {
     /*
      * Create messages on general chat
      */
-    // await newMessages({ users: usersIds, chatId: generalChat._id });
+    await newMessages({ users: usersIds, chatId: generalChat._id });
 
     const formatedUsers = users.map((user) => ({
       firstname: user.firstname,

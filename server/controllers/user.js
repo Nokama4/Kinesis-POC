@@ -21,15 +21,7 @@ export const findUser = (req, res, next) => {
 
   getUser({ _id: data.id })
     .then((user) => {
-      const userFormat = {
-        id: user._id,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        name: `${user.firstname} ${user.lastname}`,
-        avatar: user.avatar,
-      };
-
-      res.status(status.OK).json(userFormat);
+      res.status(status.OK).json(user);
     })
     .catch(next);
 };
