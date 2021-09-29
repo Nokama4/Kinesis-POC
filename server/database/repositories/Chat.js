@@ -7,8 +7,8 @@ import mongoose from 'mongoose';
 /*
  * Local Import
  */
-import APIError from 'server/src/utils/APIError';
-import Chat from 'server/src/database/models/Chat';
+import APIError from '../../utils/APIError.js';
+import Chat from '../models/Chat.js';
 
 /**
  * Generate a new Chat

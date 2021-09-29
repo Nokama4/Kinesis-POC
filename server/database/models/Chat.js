@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 /*
  * Local Import
  */
-import CHATS from 'server/src/constants/chats';
+import CHATS from '../../constants/chats.js';
 
 /*
  * Enum

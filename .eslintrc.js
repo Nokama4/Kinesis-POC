@@ -1,11 +1,8 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'airbnb/hooks'],
+  extends: ['plugin:security/recommended'],
   plugins: [
     'security'
-  ],
-  extends: [
-    'plugin:security/recommended'
   ],
   env: {
     node: true
@@ -42,7 +39,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        paths: ['./']
+        paths: ['./server/']
       }
     }
   }

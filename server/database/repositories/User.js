@@ -2,13 +2,12 @@
  * Package Import
  */
 import status from 'http-status';
-import bcrypt from 'bcrypt';
 
 /*
  * Local Import
  */
-import APIError from 'server/src/utils/APIError';
-import User from 'server/src/database/models/User';
+import APIError from '../../utils/APIError.js';
+import User from '../models/User.js';
 
 /**
  * Generate a new User
