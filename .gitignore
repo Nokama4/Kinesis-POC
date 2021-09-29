@@ -1,0 +1,30 @@
+# Thumbs Files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+/vendor
+/node_modules
+
+# Editor Configuration
+.vscode
+.idea
+
+# Javascript Compiled
+/public
+/build
+/dist
+
+# Configuration
+.env
+.env.*
+!.env.sample
+/config/test.json
+/config/development.json
+/config/production.json
+
+# Logs
+/*.log
+
+# Cache files
+/.eslintcache
