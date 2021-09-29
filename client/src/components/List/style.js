@@ -8,7 +8,23 @@ import styled from '@emotion/styled';
  */
 
 export const ListContainer = styled.div({
-  width: '8em',
+  width: '14em',
   height: '100%',
-  border: '1px red solid',
+  borderRight: '1px black solid',
+  background: '#4A154B',
+  display: 'flex',
+  flexDirection: 'column'
+});
+
+export const ChatsContainer = styled.ul({
+
+});
+
+export const Item = styled.li({
+  fontWeight: '600',
+  color: '#FFFFFF',
+});
+
+export const UsersContainer = styled.ul({
+
 });

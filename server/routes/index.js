@@ -6,7 +6,7 @@ import { Router } from 'express';
 /*
  * Local Import
  */
-// import { findChat, findChats } from '../controllers/chat.js'
+import { findChat, findChats } from '../controllers/chat.js'
 import { findUser, findUsers } from '../controllers/user.js'
 // Routes
 
@@ -38,8 +38,8 @@ export default (app) => {
   /*
    * Chat Routes
    */
-  // chatRoutes.get('/find/:id', findChat);
-  // chatRoutes.get('/find', findChats);
+  chatRoutes.get('/find/:id', findChat);
+  chatRoutes.get('/find', findChats);
 
   /*
    * User Routes

@@ -41,15 +41,14 @@ export const findUsers = (req, res, next) => {
   const data = req.query;
   getUsers(data)
     .then((users) => {
-      const formatedUsers = users.map((user) => ({
-        id: user._id,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        name: `${user.firstname} ${user.lastname}`,
-        avatar: user.avatar,
-      }));
+      // Format data
+      const usersIds = users.map(({ _id }) => _id);
+      const userById = users.reduce((acc, item) => {
+        acc[item._id] = item;
+        return acc
+      }, {});
 
-      res.status(status.OK).send(formatedUsers);
+      res.status(status.OK).send({ usersIds, userById });
     })
     .catch(next);
 };
