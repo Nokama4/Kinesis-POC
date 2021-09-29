@@ -34,7 +34,7 @@ const List = ({ usersIds, userById }) => {
         {data.chatsIds.map((id) => {
           const { type } = data.chatById[id];
 
-          return type === 'general' ? (<S.Item key={id}></S.Item>) : null
+          return type === 'general' ? (<S.Item key={id}># general</S.Item>) : null
 
         })}
       </S.ChatsContainer>

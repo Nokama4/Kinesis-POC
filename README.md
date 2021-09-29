@@ -24,3 +24,12 @@ $ git clone https://github.com/Nokama4/Slacklike-app.git
 $ cd Slacklike-app
 $ cd client && yarn && cd .. && yarn && yarn dev
 ```
+
+## TODO
+
+[More to come](https://github.com/Nokama4/Slacklike-app/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+
+- Chat integration
+- Websocket with socket.io in front (React Context) & back
+- Private or group chat
+- Video conference
