@@ -108,37 +108,3 @@ export const updateChat = (param) => (newData) =>
       return resolve(chat);
     });
   });
-
-
-/**
- * Delete a Chat
- * @param {Object} param - { _id: 123 }
- * @return {Promise<(), APIError>}
- */
-export const deleteChat = (param) =>
-  new Promise((resolve, reject) => {
-    Chat.deleteOne(param, (error, chat) => {
-      if (error || chat.n === 0) {
-        return reject(new APIError('delete_chat_failed', status.BAD_REQUEST));
-      }
-
-      return resolve(chat);
-    });
-  });
-
-/**
- * Deactive a Chat
- * @param {Object} param - { _id: 123 }
- * @param {Date} deactiveDate
- * @return {Promise<Chat, APIError>}
- */
-export const deactiveChat = (param, deactiveDate) =>
-  updateChat(param)({ $set: { deactivatedAt: deactiveDate } });
-
-/**
- * Reactivate a Chat
- * @param {Object} param - { _id: 123 }
- * @return {Promise<Chat, APIError>}
- */
-export const resumeChat = (param) =>
-  removePropertyFromChat(param)({ deactivatedAt: '' });

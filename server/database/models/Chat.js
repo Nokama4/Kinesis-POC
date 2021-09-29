@@ -50,7 +50,6 @@ const ChatSchema = new mongoose.Schema(
       type: Date,
     },
   },
-  { minimize: false },
   {
     // Create fields `createdAt` and `updatedAt`
     timestamps: true,

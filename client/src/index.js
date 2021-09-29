@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 import GlobalStyles from './global-styles';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
+// Create a client
+const queryClient = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyles />
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <GlobalStyles />
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

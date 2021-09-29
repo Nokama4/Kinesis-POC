@@ -102,39 +102,3 @@ export const updateUser = (param) => (newData) =>
       },
     );
   });
-
-
-
-/**
- * Delete a User
- * @param {Object} param - { _id: 123 }
- * @return {Promise<(), APIError>}
- */
-export const deleteUser = (param) =>
-  new Promise((resolve, reject) => {
-    User.findOneAndRemove(param, (error, user) => {
-      // If we have an error
-      if (error || !user) {
-        return reject(new APIError('delete_user_failed', status.BAD_REQUEST));
-      }
-
-      return resolve(user);
-    });
-  });
-
-/**
- * Deactive a User
- * @param {Object} param - { _id: 123 }
- * @param {Date} deactiveDate
- * @return {Promise<User, APIError>}
- */
-export const deactiveUser = (param, deactiveDate) =>
-  updateUser(param)({ deactivatedAt: deactiveDate });
-
-/**
- * Reactivate a User
- * @param {Object} param - { _id: 123 }
- * @return {Promise<User, APIError>}
- */
-export const resumeUser = (param) =>
-  removePropertyFromUser(param)({ deactivatedAt: '' });

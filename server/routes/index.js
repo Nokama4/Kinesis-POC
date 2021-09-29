@@ -1,12 +1,13 @@
 /*
  * Package Import
  */
-import express from 'express';
+import { Router } from 'express';
 
 /*
  * Local Import
  */
-
+// import { findChat, findChats } from '../controllers/chat.js'
+import { findUser, findUsers } from '../controllers/user.js'
 // Routes
 
 
@@ -15,7 +16,9 @@ import express from 'express';
  */
 
 // Routers
-const apiRoutes = express.Router();
+const apiRoutes = Router();
+const chatRoutes = new Router();
+const userRoutes = new Router();
 
 /*
  * Routes
@@ -29,7 +32,19 @@ export default (app) => {
   /*
    * Api Routes
    */
-  apiRoutes.get('/chats', () => console.log('chats route'));
-  apiRoutes.get('/users', () => console.log('users route'));
+  apiRoutes.use('/chats', chatRoutes);
+  apiRoutes.use('/users', userRoutes);
+
+  /*
+   * Chat Routes
+   */
+  // chatRoutes.get('/find/:id', findChat);
+  // chatRoutes.get('/find', findChats);
+
+  /*
+   * User Routes
+   */
+  userRoutes.get('/find/:id', findUser);
+  userRoutes.get('/find', findUsers);
 
 };

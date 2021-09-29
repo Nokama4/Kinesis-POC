@@ -7,7 +7,8 @@ import styled from '@emotion/styled';
  * Components
  */
 
-export const Container = styled.div({
+export const ListContainer = styled.div({
+  width: '8em',
   height: '100%',
-  width: '100%',
+  border: '1px red solid',
 });
